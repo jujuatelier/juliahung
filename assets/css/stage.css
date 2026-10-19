@@ -6,8 +6,6 @@
    Self-contained on purpose — nothing here leaks into the rest of the site.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500&display=swap');
-
 :root {
   /* Behind the picture. Matched to the top edge of the picture as it actually
      renders — the photograph's grey with the top scrim over it, sampled at
@@ -116,7 +114,6 @@ a { color: inherit; text-decoration: none; transition: color 120ms linear, borde
    open at the same scale. It scales with the viewport so it never crowds the
    nav on the way down to 600px, below which the nav takes its own row. */
 .stage__mark {
-  font-family: "Bodoni Moda", Georgia, serif;
   font-size: clamp(24px, 3.4vw, 34px);
   line-height: 1.1; letter-spacing: -0.005em;
   font-weight: 500;
