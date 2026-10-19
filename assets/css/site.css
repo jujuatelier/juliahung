@@ -5,6 +5,8 @@
    If a rule cannot be traced to a line of the spec, it does not belong.
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500&display=swap');
+
 /* --- Tokens -------------------------------------------------------------- */
 
 :root {
@@ -142,6 +144,7 @@ a { color: inherit; text-decoration: none; }
    with the viewport so it never crowds the nav on the way down to 600px,
    below which the nav takes its own row and the mark has the line to itself. */
 .hdr__mark {
+  font-family: "Bodoni Moda", Georgia, serif;
   font-size: clamp(24px, 3.4vw, 34px);
   line-height: 1.1; letter-spacing: -0.005em;
   font-weight: 500; color: var(--ink);
