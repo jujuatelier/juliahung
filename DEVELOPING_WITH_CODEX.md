@@ -46,10 +46,11 @@ download the website until you have accepted it.
 
 1. If you do not have an account, sign up at
    [github.com/signup](https://github.com/signup) and verify your email.
-2. Send your GitHub username to the repository owner and ask to be added as a
-   collaborator on `jujuhung/juliahung`.
+2. Send your GitHub username to an owner of the **jujuatelier** organization
+   and ask to be added as a collaborator on `jujuatelier/juliahung`, with
+   **Write** access.
 3. You will get an email invitation. **Accept it** — the invitation also shows
-   up at <https://github.com/jujuhung/juliahung/invitations>.
+   up at <https://github.com/jujuatelier/juliahung/invitations>.
 
 While you wait for the invitation, carry on with the rest of the setup.
 
@@ -210,7 +211,7 @@ down from GitHub:
 
 ```bash
 cd ~/Documents
-git clone https://github.com/jujuhung/juliahung.git
+git clone https://github.com/jujuatelier/juliahung.git
 ```
 
 That creates `~/Documents/juliahung`, holding the whole website. To see it in
@@ -321,12 +322,8 @@ Codex starts the server and gives you an address, normally
 <http://localhost:8000>. Open it in your browser, and refresh the page after
 each change.
 
-To check the site the way GitHub will serve it, under a `/juliahung/` path, ask:
-
-> Serve the folder above the repository instead, so I can check the site at
-> /juliahung/.
-
-Then open <http://localhost:8000/juliahung/>.
+This is the only place to see a change before the public does: once you push,
+it goes straight to the live website.
 
 When you are finished reviewing, ask Codex to stop the preview server. The
 server is visible only on your Mac; previewing publishes nothing.
@@ -340,8 +337,8 @@ Before committing, ask Codex:
 
 The two checks that matter are `check_site.py` — internal links, shared
 navigation, old Wix references, image descriptions — and `relativize.py
---check`, which verifies that the same site works both at the GitHub Pages
-`/juliahung/` path and at `jujuhung.com`.
+--check`, which verifies that every internal link and image path is relative
+to its page, so the site also works in the local preview.
 
 Automated checks help, but also look at the changed pages yourself — once in a
 wide desktop window, once in a narrow phone-sized one.
@@ -352,7 +349,8 @@ Three Git operations, with three different jobs:
 
 - **Pull** downloads other people's latest changes from GitHub.
 - **Commit** saves a named snapshot on your Mac.
-- **Push** uploads your commits to GitHub and starts publishing.
+- **Push** uploads your commits to GitHub and publishes them to the live
+  website, <https://www.jujuhung.com/>. There is no separate test site.
 
 The order:
 
@@ -381,7 +379,7 @@ force-push as a quick fix; both can destroy other people's work.
 GitHub Pages takes a short while to deploy. Open the repository's **Actions**
 tab on GitHub and wait for the Pages workflow to turn green. Then review:
 
-<https://jujuhung.github.io/juliahung/>
+<https://www.jujuhung.com/>
 
 Use a private browser window, or force-refresh with **Command-Shift-R**, if an
 old stylesheet or image is cached. A successful push only proves that the
@@ -424,7 +422,7 @@ knowing them makes its summaries easier to read.
 ```bash
 python3 -m http.server 8000        # the local preview at localhost:8000
 python3 tools/check_site.py        # links, header drift, Wix refs, alt text
-python3 tools/relativize.py --check  # paths work at /juliahung/ and at the domain
+python3 tools/relativize.py --check  # internal links stay relative
 
 git pull --ff-only origin main     # bring down other people's changes
 git status                         # what has changed locally

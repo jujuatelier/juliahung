@@ -29,8 +29,11 @@ Always in that order: **pull → edit → commit → push.**
 6. **Commit and push** once you are happy:
    > Commit only the files for this change with a clear message, then push.
 7. **Confirm** it is live, a few minutes later, at
-   <https://jujuhung.github.io/juliahung/>. If the old version still shows,
-   press **Command-Shift-R**.
+   <https://www.jujuhung.com/>. If the old version still shows, press
+   **Command-Shift-R**.
+
+Pushing publishes straight to the public website; there is no separate test
+site. Step 4, the preview on your own Mac, is your chance to catch mistakes.
 
 ## The commands Codex runs for you
 
