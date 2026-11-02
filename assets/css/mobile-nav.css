@@ -1,0 +1,51 @@
+/* Mobile navigation drawer. Desktop navigation remains the existing header row. */
+.mobile-menu-toggle, .mobile-menu-backdrop, .mobile-menu-drawer { display: none; }
+
+@media (max-width: 600px) {
+  .mobile-menu-toggle {
+    display: inline-flex; position: relative; z-index: 1102; align-items: center;
+    justify-content: center; width: 44px; height: 44px; margin: -8px -8px -8px auto;
+    padding: 8px; border: 0; background: transparent; color: var(--mute); cursor: pointer;
+  }
+  .mobile-menu-toggle svg { width: 24px; height: 24px; }
+  .hdr, .stage__hdr { align-items: center; }
+  .hdr__nav, .stage__nav { display: none; }
+  .mobile-menu-backdrop {
+    display: block; position: fixed; z-index: 1100; inset: 0; width: 100%; height: 100%;
+    padding: 0; border: 0; background: rgba(0, 0, 0, .60); opacity: 0;
+    visibility: hidden; transition: opacity .28s ease, visibility .28s ease;
+  }
+  .mobile-menu-drawer {
+    display: block; position: fixed; z-index: 1101; inset: 0 0 0 auto; box-sizing: border-box;
+    width: 43vw; min-width: 155px; max-width: 320px; padding: 88px 24px 32px;
+    overflow-y: auto; background: #fff; color: var(--body);
+    transform: translateX(102%); visibility: hidden;
+    transition: transform .3s ease, visibility .3s ease;
+  }
+  .mobile-menu-close {
+    position: absolute; top: 22px; right: 20px; display: grid; place-items: center;
+    width: 42px; height: 42px; padding: 4px; border: 0; background: transparent;
+    color: var(--mute); cursor: pointer;
+  }
+  .mobile-menu-close svg { width: 30px; height: 30px; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(22px, 6vh, 42px); }
+  .mobile-menu-links a {
+    color: var(--ink, #121212); font-family: var(--sans, "Helvetica Neue", Helvetica, Arial, sans-serif);
+    font-size: clamp(17px, 4.6vw, 22px);
+    font-weight: 400; line-height: 1.25;
+    letter-spacing: .005em; text-decoration: none; white-space: nowrap;
+  }
+  .mobile-menu-links a[aria-current="page"] { color: var(--ink, #121212); }
+  .mobile-menu-links a:focus-visible, .mobile-menu-toggle:focus-visible,
+  .mobile-menu-close:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  body.mobile-menu-open { position: fixed; width: 100%; overflow: hidden; }
+  body.mobile-menu-open .mobile-menu-backdrop { opacity: 1; visibility: visible; }
+  body.mobile-menu-open .mobile-menu-drawer { transform: translateX(0); visibility: visible; }
+}
+
+@media (max-width: 360px) {
+  .mobile-menu-drawer { width: 45vw; min-width: 145px; padding-inline: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-backdrop, .mobile-menu-drawer { transition-duration: .01ms; }
+}
