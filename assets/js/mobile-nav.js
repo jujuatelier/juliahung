@@ -26,12 +26,6 @@
   drawer.setAttribute('aria-label', 'Navigation menu');
   drawer.setAttribute('aria-modal', 'true');
 
-  const close = document.createElement('button');
-  close.className = 'mobile-menu-close';
-  close.type = 'button';
-  close.setAttribute('aria-label', 'Close navigation menu');
-  close.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
-
   const links = document.createElement('nav');
   links.className = 'mobile-menu-links';
   links.setAttribute('aria-label', 'Main');
@@ -44,7 +38,7 @@
     if (target.origin === location.origin && target.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   });
-  drawer.append(close, links);
+  drawer.append(links);
   document.body.append(backdrop, drawer);
 
   let previousFocus = null;
@@ -57,7 +51,7 @@
     document.body.classList.add('mobile-menu-open');
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close navigation menu');
-    close.focus();
+    links.querySelector('a')?.focus();
   };
   const closeMenu = () => {
     document.body.classList.remove('mobile-menu-open');
@@ -68,14 +62,13 @@
     if (previousFocus instanceof HTMLElement) previousFocus.focus();
   };
   toggle.addEventListener('click', openMenu);
-  close.addEventListener('click', closeMenu);
   backdrop.addEventListener('click', closeMenu);
   links.addEventListener('click', (event) => { if (event.target.closest('a')) closeMenu(); });
   document.addEventListener('keydown', (event) => {
     if (!document.body.classList.contains('mobile-menu-open')) return;
     if (event.key === 'Escape') closeMenu();
     if (event.key === 'Tab') {
-      const focusable = [...drawer.querySelectorAll('button, a')];
+      const focusable = [...drawer.querySelectorAll('a')];
       const first = focusable[0], last = focusable[focusable.length - 1];
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
