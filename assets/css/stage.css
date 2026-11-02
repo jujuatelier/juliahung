@@ -213,8 +213,11 @@ a { color: inherit; text-decoration: none; transition: color 120ms linear, borde
 }
 
 @media (max-width: 600px) {
-  /* Raise the sculpture clear of the lower-left exhibition copy. The stage
-     ground and existing scrims fill the small exposed bands at the edges. */
+  /* Continue the portrait's gray background through the edges exposed by
+     raising the sculpture clear of the lower-left exhibition copy. */
+  .stage__media {
+    background: url("../img/exhibitions/wen/iphone13_2026_Wen_Enamelled-copper-wire_H52xW45xD33-cm_2_mini-SRGB.jpg") center / cover no-repeat;
+  }
   .stage__media img { transform: translateY(-6vh); }
   .stage__hdr { row-gap: 16px; }
   .stage__nav {
