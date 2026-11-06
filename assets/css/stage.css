@@ -10,7 +10,7 @@
   /* Neutral ground behind the fitted portrait image. */
   --stage-ground: #e4e0da;
   --stage-ink:    #FFFFFF;
-  --stage-soft:   rgba(255, 255, 255, 0.72);   /* metadata over the image */
+  --stage-soft:   rgba(255, 255, 255, 0.90);   /* metadata over the image */
   --stage-faint:  rgba(255, 255, 255, 0.34);   /* rules and inactive links  */
 
   --sans: "Helvetica Neue", Helvetica, Arial, "Noto Sans TC",
@@ -97,11 +97,11 @@ a { color: inherit; text-decoration: none; transition: color 120ms linear, borde
 }
 .stage__media::before {
   top: 0; height: 52%;
-  background: linear-gradient(to bottom, rgba(67, 58, 54, 0.90) 0%, rgba(67, 58, 54, 0.69) 25%, rgba(67, 58, 54, 0.38) 50%, rgba(67, 58, 54, 0.11) 75%, rgba(67, 58, 54, 0) 100%);
+  background: linear-gradient(to bottom, rgba(100, 93, 88, 0.72) 0%, rgba(146, 138, 131, 0.44) 25%, rgba(184, 176, 168, 0.22) 50%, rgba(207, 199, 191, 0.07) 75%, rgba(207, 199, 191, 0) 100%);
 }
 .stage__media::after {
   bottom: 0; height: 52%;
-  background: linear-gradient(to top, rgba(78, 68, 70, 0.80), rgba(142, 130, 132, 0.34) 46%, rgba(205, 194, 196, 0));
+  background: linear-gradient(to top, rgba(113, 105, 98, 0.66), rgba(174, 165, 156, 0.26) 46%, rgba(207, 199, 191, 0));
 }
 
 .stage > *:not(.stage__media) { position: relative; z-index: 1; }
@@ -113,6 +113,7 @@ a { color: inherit; text-decoration: none; transition: color 120ms linear, borde
    the same x here as it does there rather than at the edge of the screen. */
 .stage__hdr,
 .stage__foot {
+  text-shadow: 0 1px 4px rgba(103, 97, 89, 0.38);
   width: 100%;
   max-width: var(--max);
   margin-inline: auto;
@@ -163,6 +164,7 @@ a { color: inherit; text-decoration: none; transition: color 120ms linear, borde
 .stage__label {
   font-size: 11px; line-height: 1.4; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--stage-soft);
+  text-shadow: 0 1px 4px rgba(103, 97, 89, 0.56);
 }
 
 .stage__title {
