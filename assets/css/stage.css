@@ -8,7 +8,7 @@
 
 :root {
   /* Neutral ground behind the fitted portrait image. */
-  --stage-ground: #e6e6e6;
+  --stage-ground: #e4e0da;
   --stage-ink:    #FFFFFF;
   --stage-soft:   rgba(255, 255, 255, 0.72);   /* metadata over the image */
   --stage-faint:  rgba(255, 255, 255, 0.34);   /* rules and inactive links  */
@@ -71,10 +71,21 @@ a { color: inherit; text-decoration: none; transition: color 120ms linear, borde
 .stage__media picture {
   display: flex; align-items: center; justify-content: center;
   width: 100%; height: 100%;
+  background: url("../img/works/wen/front-page_2026_Wen_Enamelled-copper-wire_H52xW45xD33-cm_2_mini-SRGB.jpg") center / cover no-repeat;
 }
 .stage__media img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center;
+}
+
+@media (min-width: 601px) {
+  .stage__media img {
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 18%, black 82%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 18%, black 82%, transparent);
+  }
 }
 
 /* Two scrims, not one overall darkening: the middle of the picture is left
@@ -82,14 +93,15 @@ a { color: inherit; text-decoration: none; transition: color 120ms linear, borde
 .stage__media::before,
 .stage__media::after {
   content: ""; position: absolute; left: 0; right: 0; pointer-events: none;
+  z-index: 1;
 }
 .stage__media::before {
-  top: 0; height: 34%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0));
+  top: 0; height: 52%;
+  background: linear-gradient(to bottom, rgba(67, 58, 54, 0.90) 0%, rgba(67, 58, 54, 0.69) 25%, rgba(67, 58, 54, 0.38) 50%, rgba(67, 58, 54, 0.11) 75%, rgba(67, 58, 54, 0) 100%);
 }
 .stage__media::after {
   bottom: 0; height: 52%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(78, 68, 70, 0.80), rgba(142, 130, 132, 0.34) 46%, rgba(205, 194, 196, 0));
 }
 
 .stage > *:not(.stage__media) { position: relative; z-index: 1; }
@@ -219,6 +231,7 @@ a { color: inherit; text-decoration: none; transition: color 120ms linear, borde
     background: url("../img/exhibitions/wen/iphone13_2026_Wen_Enamelled-copper-wire_H52xW45xD33-cm_2_mini-SRGB.jpg") center / cover no-repeat;
   }
   .stage__media img { transform: translateY(-6vh); }
+  .stage__media picture { background: none; }
   .stage__hdr { row-gap: 16px; }
   .stage__nav {
     flex: 1 0 100%;
