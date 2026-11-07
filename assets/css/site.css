@@ -556,13 +556,10 @@ a { color: inherit; text-decoration: none; }
   align-items: start;
 }
 
-/* The address is the largest type on the page: above .t-display, below the
-   wordmark, which stays the largest thing on the site. Its rule is the width
-   of the address, not of the column, so it reads as an underline. */
 .contact__email {
   display: inline-block;
-  font-size: clamp(21px, 2.4vw, 28px);
-  line-height: 1.2; letter-spacing: -0.005em;
+  font-size: clamp(18px, 1.7vw, 20px);
+  line-height: 1.4; letter-spacing: 0.015em;
   color: var(--ink);
   border-bottom: 1px solid var(--hairline);
   padding-bottom: 10px;
@@ -571,10 +568,10 @@ a { color: inherit; text-decoration: none; }
 
 /* The marks sit in the body register, not the mute one the nav uses: they
    are the address's companions rather than a second navigation. */
-.socials { display: flex; gap: 46px; margin-top: 44px; }
-.socials a { display: block; color: var(--body); }
+.socials { display: flex; gap: 16px; margin-top: 28px; margin-left: -8px; }
+.socials a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--body); }
 .socials a:hover { color: var(--ink); }
-.socials svg { display: block; width: 20px; height: 20px; }
+.socials svg { display: block; width: 28px; height: 28px; }
 
 /* --- Form ---------------------------------------------------------------- */
 
