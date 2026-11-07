@@ -52,8 +52,8 @@ def derive(src_id, stem, force):
             im = ImageOps.exif_transpose(im)
             if im.mode not in ("RGB", "L"):
                 im = im.convert("RGB")
-            if max(im.size) > w:
-                scale = w / max(im.size)
+            if im.width > w:
+                scale = w / im.width
                 im = im.resize((max(1, round(im.width * scale)),
                                 max(1, round(im.height * scale))),
                                Image.LANCZOS)

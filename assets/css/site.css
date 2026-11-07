@@ -314,6 +314,15 @@ a { color: inherit; text-decoration: none; }
   aspect-ratio: var(--ar); object-fit: cover; object-position: var(--pos, center);
 }
 
+.page.page--detail .fig img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+}
+.page--detail .untamed-gallery > .pair { width: 100%; }
+
 .video-embed { position: relative; aspect-ratio: 4 / 3; background: var(--hover); }
 .video-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 
@@ -324,6 +333,18 @@ a { color: inherit; text-decoration: none; }
 }
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
 .fig--half { width: calc((100% - var(--gutter)) / 2); }
+.page--detail .pair {
+  display: flex;
+  align-items: flex-start;
+}
+.page--detail .pair > .fig {
+  flex: var(--photo-ratio, 1) 1 0;
+  min-width: 0;
+}
+.page--detail .stack > .fig {
+  width: min(100%, calc(var(--photo-ratio, 1.5) * 720px));
+  margin-inline: auto;
+}
 
 /* --- Links --------------------------------------------------------------- */
 
@@ -602,6 +623,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 600px) {
+  .page--detail .pair { flex-direction: column; }
+  .page--detail .pair > .fig { flex: none; width: 100%; }
+  .page--detail .stack > .fig { width: 100%; }
   :root { --top: 28px; --tail: 32px; }
   /* The works grid holds two columns all the way down — smaller tiles, but
      the shape of the index stays readable. */
