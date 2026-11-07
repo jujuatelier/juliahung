@@ -38,7 +38,12 @@
     if (target.origin === location.origin && target.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   });
-  drawer.append(links);
+  const closeButton = document.createElement('button');
+  closeButton.className = 'mobile-menu-close';
+  closeButton.type = 'button';
+  closeButton.setAttribute('aria-label', 'Close navigation menu');
+  closeButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 4 16 16M20 4 4 20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
+  drawer.append(closeButton, links);
   document.body.append(backdrop, drawer);
 
   let previousFocus = null;
@@ -63,12 +68,13 @@
   };
   toggle.addEventListener('click', openMenu);
   backdrop.addEventListener('click', closeMenu);
+  closeButton.addEventListener('click', closeMenu);
   links.addEventListener('click', (event) => { if (event.target.closest('a')) closeMenu(); });
   document.addEventListener('keydown', (event) => {
     if (!document.body.classList.contains('mobile-menu-open')) return;
     if (event.key === 'Escape') closeMenu();
     if (event.key === 'Tab') {
-      const focusable = [...drawer.querySelectorAll('a')];
+      const focusable = [...drawer.querySelectorAll('button, a')];
       const first = focusable[0], last = focusable[focusable.length - 1];
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
