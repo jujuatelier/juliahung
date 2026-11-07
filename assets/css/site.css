@@ -7,6 +7,21 @@
 
 /* --- Tokens -------------------------------------------------------------- */
 
+@font-face {
+  font-family: "Caption Condensed";
+  src: url("../fonts/roboto-condensed/RobotoCondensed.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caption Condensed";
+  src: url("../fonts/roboto-condensed/RobotoCondensed-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   --paper:    #FFFFFF;  /* page ground                        */
   --ink:      #6f625a;  /* titles, opening rules              */
@@ -359,18 +374,17 @@ a { color: inherit; text-decoration: none; }
 
 .fig figcaption {
   margin-top: 5px;
-  font-family: "Arial Narrow", "Aptos Narrow", "Helvetica Neue", sans-serif;
+  font-family: "Caption Condensed", "Arial Narrow", sans-serif;
+  font-weight: 400;
   font-stretch: condensed;
   font-size: 12px; line-height: 1.35; letter-spacing: 0.01em;
   color: var(--mute);
+  text-transform: none;
 }
 .caption-details {
   display: inline;
   font: inherit;
   letter-spacing: inherit;
-}
-.caption-details::before {
-  content: " · ";
 }
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
 .fig--half { width: calc((100% - var(--gutter)) / 2); }
