@@ -18,6 +18,8 @@ For a one-page daily reference (pull, commit, push), see
 
 That is the whole toolchain. The repo root *is* the site.
 
+The preview server disables browser caching so pages and styles refresh after edits.
+
 ## Two addresses
 
 The site has to serve from two roots at once:

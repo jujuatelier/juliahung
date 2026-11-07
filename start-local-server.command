@@ -34,4 +34,4 @@ elif [[ "${NO_OPEN:-}" != "1" ]] && command -v xdg-open >/dev/null 2>&1; then
   (sleep 1; xdg-open "$url") &
 fi
 
-exec python3 -m http.server "$port" --bind 127.0.0.1
+exec python3 tools/serve.py "$port"

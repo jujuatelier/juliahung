@@ -8,12 +8,12 @@
 /* --- Tokens -------------------------------------------------------------- */
 
 :root {
-  --paper:    #FBFBFA;  /* page ground                        */
-  --ink:      #121212;  /* titles, opening rules              */
-  --body:     #55524D;  /* metadata, running text             */
-  --mute:     #8A8780;  /* labels, inactive nav, underlines   */
-  --hover:    #F2F1ED;  /* index row wash                     */
-  --hairline: #E4E2DD;  /* rules between rows                 */
+  --paper:    #FFFFFF;  /* page ground                        */
+  --ink:      #6f625a;  /* titles, opening rules              */
+  --body:     #776a62;  /* metadata, running text             */
+  --mute:     #82746a;  /* labels, inactive nav, underlines   */
+  --hover:    #f7f4f1;  /* index row wash                     */
+  --hairline: #e5ddd7;  /* rules between rows                 */
 
   --sans: "Helvetica Neue", Helvetica, Arial, "Noto Sans TC",
           "PingFang TC", "Microsoft JhengHei", sans-serif;
@@ -132,7 +132,7 @@ a { color: inherit; text-decoration: none; }
 
 .hdr {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--gutter);
   flex-wrap: wrap;
@@ -141,14 +141,23 @@ a { color: inherit; text-decoration: none; }
 /* The wordmark is the largest type on the site — above .t-display. It scales
    with the viewport so it never crowds the nav on the way down to 600px,
    below which the nav takes its own row and the mark has the line to itself. */
-.hdr__mark {
-  font-size: clamp(24px, 3.4vw, 34px);
-  line-height: 1.1; letter-spacing: -0.005em;
+.hdr > .hdr__mark {
+  display: block;
+  width: 5.425em;
+  height: 1em;
+  overflow: hidden;
+  background-color: var(--ink);
+  -webkit-mask: url("../img/julia-hung-wordmark.svg") left center / contain no-repeat;
+  mask: url("../img/julia-hung-wordmark.svg") left center / contain no-repeat;
+  text-indent: -9999px;
+  font-size: clamp(25px, 3.4vw, 34px);
+  line-height: 1.1; letter-spacing: 0.035em;
   font-weight: 500; color: var(--ink);
 }
 /* min-width:0 lets the nav shrink below its content width so wrapping can
    actually happen; without it a flex item refuses and the page overflows. */
 .hdr__nav {
+  font-size: 13px; line-height: 1.4; letter-spacing: 0.08em;
   display: flex; align-items: baseline; gap: 24px;
   flex-wrap: wrap; justify-content: flex-end;
   flex: 1 1 auto; min-width: 0;
@@ -459,7 +468,7 @@ a { color: inherit; text-decoration: none; }
 
 /* --- Form ---------------------------------------------------------------- */
 
-.form { border-top: 1px solid var(--ink); padding-top: 28px; }
+.form { border-top: 1px solid var(--hairline); padding-top: 28px; }
 .form > * + * { margin-top: 28px; }
 
 .field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -477,6 +486,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 15px; line-height: 1.6;
   color: var(--ink);
   transition: border-color 120ms linear;
+  text-shadow: inherit;
 }
 .field input::placeholder, .field textarea::placeholder {
   color: var(--mute); opacity: 1;      /* Firefox dims placeholders by default */
@@ -490,10 +500,11 @@ a { color: inherit; text-decoration: none; }
    exactly like a text field is a trap, so it keeps a caret — mute, 9px, and
    invisible until you go looking for it. */
 .field select {
+  color-scheme: light;
   appearance: none; -webkit-appearance: none;
   padding-right: 20px;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 6'%3E%3Cpath d='M.8.8 4.5 4.5 8.2.8' fill='none' stroke='%238A8780' stroke-width='1.1'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 6'%3E%3Cpath d='M.8.8 4.5 4.5 8.2.8' fill='none' stroke='%2382746a' stroke-width='1.1'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1px top 9px;
   background-size: 9px 6px;
@@ -576,6 +587,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 600px) {
+  :root { --top: 28px; --tail: 32px; }
   /* The works grid holds two columns all the way down — smaller tiles, but
      the shape of the index stays readable. */
   .grid { gap: 28px 16px; }
@@ -592,7 +604,7 @@ a { color: inherit; text-decoration: none; }
   .hdr__nav {
     flex: 1 0 100%;
     justify-content: flex-start;
-    gap: 14px; font-size: 11px; letter-spacing: 0.08em;
+    gap: 14px; font-size: 12px; letter-spacing: 0.08em;
   }
 
   /* The year column no longer needs a fixed 120px once the venue has moved
@@ -620,7 +632,7 @@ a { color: inherit; text-decoration: none; }
     flex-wrap: nowrap;
     justify-content: space-between;
     gap: 6px;
-    font-size: clamp(9px, 2.6vw, 11px);
+    font-size: clamp(10px, 2.8vw, 12px);
     letter-spacing: 0.06em;
   }
   .hdr__nav a { white-space: nowrap; }
