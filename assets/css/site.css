@@ -171,8 +171,11 @@ a { color: inherit; text-decoration: none; }
 .hdr__nav a:hover { color: var(--ink); }
 .hdr__nav a[aria-current="page"] {
   color: var(--ink);
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 2px;          /* underline sits 2px below the baseline */
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-color: #c9bdae;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 /* --- Index row ----------------------------------------------------------- */
@@ -376,6 +379,13 @@ a { color: inherit; text-decoration: none; }
   color: var(--mute);
 }
 .filters button:hover, .filters button[aria-pressed="true"] { color: var(--ink); }
+.filters button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-decoration-color: #c9bdae;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.about__name { letter-spacing: 0.025em; }
 
 /* --- News ---------------------------------------------------------------- */
 /* Grouped by year. The numeral and its count open the group, an ink rule
