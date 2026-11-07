@@ -108,6 +108,15 @@ a { color: inherit; text-decoration: none; }
 .t-row {              /* titles inside an index */
   font-size: 17px; line-height: 1.3; color: var(--ink);
 }
+.exhibition-subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 400;
+  color: var(--mute);
+}
+.exhibition-subtitle + .exhibition-subtitle { margin-top: 0; }
+.exhibition-subtitle + .t-body { margin-top: 0.7em; }
 .t-body {             /* venue lines, captions, CV entries */
   font-size: 13px; line-height: 1.7; color: var(--body);
   max-width: 70ch;
