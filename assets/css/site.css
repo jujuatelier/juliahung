@@ -257,6 +257,7 @@ a { color: inherit; text-decoration: none; }
 }
 .meta dd { font-size: 13px; line-height: 1.7; color: var(--body); }
 
+.artwork-statement > p + p { margin-top: 16px; }
 .meta__note {
   margin-top: 16px;
   padding-top: 16px;
@@ -322,6 +323,15 @@ a { color: inherit; text-decoration: none; }
   object-position: center;
 }
 .page--detail .untamed-gallery > .pair { width: 100%; }
+.page.page--detail .fig--pink-detail picture {
+  display: block;
+  overflow: hidden;
+}
+.page.page--detail .fig--pink-detail img {
+  width: 111.111111%;
+  max-width: none;
+  margin-left: -5.555556%;
+}
 
 .video-embed { position: relative; aspect-ratio: 4 / 3; background: var(--hover); }
 .video-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
@@ -597,6 +607,13 @@ a { color: inherit; text-decoration: none; }
 /* --- Responsive ---------------------------------------------------------- */
 
 @media (max-width: 900px) {
+  .artwork-detail { display: flex; flex-direction: column; gap: 16px; }
+  .artwork-detail > .detail__meta,
+  .artwork-detail > .artwork-gallery { display: contents; }
+  .artwork-detail .artwork-gallery > * { order: 3; }
+  .artwork-detail .artwork-gallery > .fig:first-child { order: 1; }
+  .artwork-detail .artwork-statement { order: 2; margin-top: 8px; }
+  .artwork-detail .artwork-gallery > .fig { align-self: center; }
   :root { --pad: 24px; }
 
   .t-display { font-size: 21px; }          /* the only size that moves */
